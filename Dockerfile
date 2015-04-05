@@ -19,7 +19,7 @@ RUN mkdir -p /var/log/supervisor
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-orientdb-on-an-ubuntu-12-04-vps
 RUN apt-get -y install openjdk-7-jdk git ant
 
-ENV ORIENTDB_VERSION 2.0
+ENV ORIENTDB_VERSION 2.0.6
 
 # Build OrientDB cleaning up afterwards
 RUN cd && \
@@ -32,6 +32,7 @@ RUN cd && \
 # use supervisord to start orientdb
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD orientdb-server-config.xml /opt/orientdb/config/orientdb-server-config.xml
+ADD hazelcast.xml /opt/orientdb/config/hazelcast.xml
 
 EXPOSE 2424
 EXPOSE 2480
