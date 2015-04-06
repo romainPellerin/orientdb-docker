@@ -33,9 +33,11 @@ RUN cd && \
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD orientdb-server-config.xml /opt/orientdb/config/orientdb-server-config.xml
 ADD hazelcast.xml /opt/orientdb/config/hazelcast.xml
+ADD updateip.sh /opt/orientdb/updateip.sh
 
 EXPOSE 2424
 EXPOSE 2480
+EXPOSE 5071
 
 # Set the user to run OrientDB daemon
 USER root

@@ -15,13 +15,41 @@
 		<name>orientdb-rom1</name>
 		<password>orientdb-rom1</password>
 	</group>
+
+	<properties>
+		<property name="hazelcast.mancenter.enabled">false</property>
+		<property name="hazelcast.memcache.enabled">false</property>
+		<property name="hazelcast.rest.enabled">true</property>
+		<property name="hazelcast.wait.seconds.before.join">0</property>
+		<property name="hazelcast.logging.type">jdk</property>
+		<property name="hazelcast.local.localAddress">172.25.19.67</property>
+		<property name="hazelcast.socket.server.bind.any">false</property>
+		<property name="hazelcast.socket.client.bind">false</property>
+	</properties>
 	<network>
-		<port auto-increment="true">2434</port>
+		<!-- CHANGE: This is the public ip address of the host: -->
+		<public-address>129.7.0.19</public-address>
+		<!-- CHANGE: This port should be mapped on the docker level,
+        e.g. -p 5701:5701: -->
+		<port auto-increment="false" port-count="100">5701</port>
+		<outbound-ports>
+			<!--
+               Allowed port range when connecting to other nodes.
+               0 or * means use system provided port.
+               -->
+			<ports>0</ports>
+		</outbound-ports>
 		<join>
-			<multicast enabled="true">
-				<multicast-group>235.2.2.2</multicast-group>
-				<multicast-port>2434</multicast-port>
+			<!-- CHANGE: disable multicast -->
+			<multicast enabled="false">
+				<multicast-group>224.2.2.3</multicast-group>
+				<multicast-port>54327</multicast-port>
 			</multicast>
+			<!-- CHANGE: enable tcp-ip and specify the public ip
+        addresses of all the hosts that should communicate -->
+			<tcp-ip enabled="true">
+				<interface>52.4.184.79</interface>
+			</tcp-ip>
 		</join>
 	</network>
 	<executor-service>
