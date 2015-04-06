@@ -1,6 +1,10 @@
 #!/bin/bash
-echo 'Private IP: '$1
-echo 'Public IP: '$2
 
-sed -i 's/<property name="hazelcast.local.localAddress">.*/<property name="hazelcast.local.localAddress">'$1'<\/property>/' /opt/orientdb/config/hazelcast.xml
-sed -i 's/<public-address>.*/<public-address>'$2'<\/public-address>/' /opt/orientdb/config/hazelcast.xml
+LIP=`ifconfig eth0 | awk '{ print $2}' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"`
+PIP=`curl ifconfig.me/ip`
+
+echo 'Private IP: '$LIP
+echo 'Public IP: '$PIP
+
+sed -i 's/<property name="hazelcast.local.localAddress">.*/<property name="hazelcast.local.localAddress">'$LIP'<\/property>/' /opt/orientdb/config/hazelcast.xml
+sed -i 's/<public-address>.*/<public-address>'$PIP'<\/public-address>/' /opt/orientdb/config/hazelcast.xml
