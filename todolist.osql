@@ -1,3 +1,4 @@
+begin
 CREATE CLASS Todo
 CREATE PROPERTY Todo.id STRING
 CREATE PROPERTY Todo.date DATE
@@ -14,4 +15,5 @@ INSERT INTO Todo CONTENT {id:'2', date:'2015-03-26', content:'tell my team I mov
 INSERT INTO TodoList SET id = '1', name = 'Work tasks'
 UPDATE #13:0 ADD todos = #12:0
 UPDATE #13:0 ADD todos = #12:1
-
+commit
+return
