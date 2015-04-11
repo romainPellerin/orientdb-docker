@@ -8,3 +8,4 @@ echo 'Public IP: '$PIP
 
 sed -i 's/<property name="hazelcast.local.localAddress">.*/<property name="hazelcast.local.localAddress">'$LIP'<\/property>/' /opt/orientdb/config/hazelcast.xml
 sed -i 's/<public-address>.*/<public-address>'$PIP'<\/public-address>/' /opt/orientdb/config/hazelcast.xml
+sed -i 's/<interface>.*/<interface>'$PIP'<\/interface>/' /opt/orientdb/config/hazelcast.xml
