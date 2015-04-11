@@ -35,7 +35,7 @@ ADD orientdb-server-config.xml /opt/orientdb/config/orientdb-server-config.xml
 ADD hazelcast.xml /opt/orientdb/config/hazelcast.xml
 ADD updateip.sh /opt/orientdb/updateip.sh
 ADD todolist.osql /opt/orientdb/todolist.osql
-ADD default-distributed-db-config.json /opt/orientdb/default-distributed-db-config.json
+ADD default-distributed-db-config.json /opt/orientdb/config/default-distributed-db-config.json
 
 EXPOSE 2424
 EXPOSE 2480
